@@ -25,6 +25,7 @@ public class Account {
     public synchronized void withdraw(long amount) throws InterruptedException {
         checkAmountNonNegative(amount);
         while (balance < amount) {
+            System.out.println("Waiting for money...");
             wait();
         }
         balance -= amount;
